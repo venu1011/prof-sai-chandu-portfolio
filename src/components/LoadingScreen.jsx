@@ -15,10 +15,10 @@ const LoadingScreen = () => {
 
         {/* Loading Text */}
         <h1 className="text-2xl font-bold text-slate-800 mb-4 animate-fade-in">
-          Academic Portfolio
+          Dr. K. SaiChandu Kandati
         </h1>
         <p className="text-slate-600 mb-6 animate-fade-in-delay">
-          Loading your academic journey...
+          Preparing excellence in education & innovation...
         </p>
 
         {/* Progress Bar */}

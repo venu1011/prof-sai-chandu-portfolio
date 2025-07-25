@@ -46,8 +46,8 @@ export const PageLoader = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-slate-50">
       <div className="text-center">
         <LoadingSpinner size="lg" className="mx-auto mb-4" />
-        <h2 className="text-xl font-semibold text-slate-600 mb-2">Loading Portfolio</h2>
-        <p className="text-slate-500">Please wait while we prepare the content...</p>
+        <h2 className="text-xl font-semibold text-slate-600 mb-2">Initializing Experience</h2>
+        <p className="text-slate-500">Curating professional excellence for you...</p>
       </div>
     </div>
   );
