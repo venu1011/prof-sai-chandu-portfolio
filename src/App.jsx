@@ -9,7 +9,7 @@ function App() {
     // Simulate loading time for assets and initial setup
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds loading time
+    }, 3000); // 3 seconds loading time to showcase the new animation
 
     // Cleanup timer on component unmount
     return () => clearTimeout(timer);
