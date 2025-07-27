@@ -612,27 +612,27 @@ const ENotesSection = () => {
         </div>
 
         {/* Search and Filter */}
-        <div className="mb-12">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
+        <div className="mb-8 sm:mb-12">
+          <div className="flex flex-col gap-4 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
             {/* Search Bar */}
-            <div className="relative flex-1 max-w-md">
+            <div className="relative w-full max-w-md mx-auto lg:mx-0 lg:flex-1">
               <Icon name="Search" size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400" />
               <input
                 type="text"
                 placeholder="Search notes, subjects, or topics..."
                 value={searchTerm}
                 onChange={handleSearchChange}
-                className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base"
               />
             </div>
 
             {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-end">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => handleCategoryChange(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  className={`px-3 py-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
                     selectedCategory === category
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-white text-slate-600 hover:bg-blue-50 border border-slate-200'
@@ -645,7 +645,7 @@ const ENotesSection = () => {
           </div>
 
           {/* Results Info */}
-          <div className="mt-4 text-center text-slate-600">
+          <div className="mt-4 text-center text-slate-600 text-sm">
             Showing {currentNotes.length} of {filteredNotes.length} resources
             {searchTerm && ` for "${searchTerm}"`}
             {selectedCategory !== 'All' && ` in ${selectedCategory}`}
@@ -653,14 +653,14 @@ const ENotesSection = () => {
         </div>
 
         {/* E-Notes Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-8 sm:mb-12">
           {currentNotes.map((note) => (
             <div
               key={note.id}
               className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group"
             >
               {/* Thumbnail */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
                   src={note.thumbnail}
                   alt={note.title}
@@ -671,21 +671,21 @@ const ENotesSection = () => {
                 
                 {/* New Badge */}
                 {note.isNew && (
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
                     <span className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full">
                       New
                     </span>
                   </div>
                 )}
                 
-                <div className="absolute top-4 right-4">
-                  <span className="bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
+                  <span className="bg-blue-600 text-white text-xs font-semibold px-2 py-1 sm:px-3 rounded-full">
                     {note.subject}
                   </span>
                 </div>
                 
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="flex items-center justify-between text-white text-sm">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4">
+                  <div className="flex items-center justify-between text-white text-xs sm:text-sm">
                     <div className="flex items-center">
                       <Icon name="FileText" size={14} className="mr-1" />
                       <span>{note.pages} pages</span>
@@ -699,11 +699,11 @@ const ENotesSection = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6">
-                <h3 className="text-lg font-bold text-slate-800 mb-2 line-clamp-2">
+              <div className="p-4 sm:p-6">
+                <h3 className="text-base sm:text-lg font-bold text-slate-800 mb-2 line-clamp-2">
                   {note.title}
                 </h3>
-                <p className="text-slate-600 text-sm mb-3 line-clamp-2">
+                <p className="text-slate-600 text-xs sm:text-sm mb-3 line-clamp-2">
                   {note.description}
                 </p>
 
@@ -724,7 +724,7 @@ const ENotesSection = () => {
 
                 {/* Stats and Download */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3 text-sm text-slate-500">
+                  <div className="flex items-center space-x-3 text-xs sm:text-sm text-slate-500">
                     <div className="flex items-center">
                       <Icon name="Download" size={14} className="mr-1" />
                       <span>{note.downloads}</span>
@@ -736,7 +736,7 @@ const ENotesSection = () => {
                     iconName="Download"
                     iconPosition="left"
                     onClick={() => handleDownload(note.driveLink, note.title)}
-                    className="transform hover:scale-105 transition-transform duration-200"
+                    className="transform hover:scale-105 transition-transform duration-200 text-xs sm:text-sm"
                   >
                     Download
                   </Button>
@@ -748,11 +748,11 @@ const ENotesSection = () => {
 
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center space-x-2 mb-12">
+          <div className="flex justify-center items-center space-x-2 mb-8 sm:mb-12">
             <button
               onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="px-4 py-2 rounded-lg border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
+              className="px-3 py-2 sm:px-4 rounded-lg border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
             >
               <Icon name="ChevronLeft" size={16} />
             </button>
@@ -768,7 +768,7 @@ const ENotesSection = () => {
                   <button
                     key={page}
                     onClick={() => setCurrentPage(page)}
-                    className={`px-4 py-2 rounded-lg ${
+                    className={`px-3 py-2 sm:px-4 rounded-lg text-sm ${
                       currentPage === page
                         ? 'bg-blue-600 text-white'
                         : 'border border-slate-200 hover:bg-slate-50'
@@ -781,7 +781,7 @@ const ENotesSection = () => {
                 page === currentPage - 2 ||
                 page === currentPage + 2
               ) {
-                return <span key={page} className="px-2">...</span>;
+                return <span key={page} className="px-2 text-slate-400">...</span>;
               }
               return null;
             })}
@@ -789,7 +789,7 @@ const ENotesSection = () => {
             <button
               onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded-lg border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
+              className="px-3 py-2 sm:px-4 rounded-lg border border-slate-200 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-slate-50"
             >
               <Icon name="ChevronRight" size={16} />
             </button>
@@ -819,12 +819,12 @@ const ENotesSection = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 max-w-2xl mx-auto">
             <Icon name="MessageSquare" size={48} color="#3b82f6" className="mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-slate-800 mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-slate-800 mb-4">
               Need Specific Study Materials?
             </h3>
-            <p className="text-slate-600 mb-6">
+            <p className="text-slate-600 mb-6 text-sm sm:text-base">
               Looking for specific topics, custom training materials, or have questions about the resources? 
               As someone with extensive experience in training and placement coordination, 
               I'm here to help you with tailored educational solutions.
@@ -835,6 +835,7 @@ const ENotesSection = () => {
               iconName="Mail"
               iconPosition="left"
               onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto"
             >
               Contact for Custom Materials
             </Button>

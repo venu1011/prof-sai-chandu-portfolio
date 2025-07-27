@@ -102,30 +102,30 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-14 sm:h-16 px-3 sm:px-4 lg:px-8">
+          {/* Logo - Mobile First */}
           <Link 
             to="/academic-portfolio-homepage" 
-            className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-300"
+            className="flex items-center space-x-2 sm:space-x-3 hover:opacity-80 transition-opacity duration-300"
           >
-            <div className="flex items-center justify-center w-10 h-10 bg-primary rounded-lg">
-              <Icon name="GraduationCap" size={24} color="white" />
+            <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 bg-primary rounded-lg">
+              <Icon name="GraduationCap" size={20} color="white" className="sm:w-6 sm:h-6" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-semibold text-foreground">Dr.K.SaiChandu Kandati</span>
-              <span className="text-xs text-muted-foreground">Professional Excellence</span>
+              <span className="text-sm sm:text-lg font-semibold text-foreground">Dr.K.SaiChandu Kandati</span>
+              <span className="text-xs text-muted-foreground hidden sm:block">Professional Excellence</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {/* Always show homepage section navigation since it's a single-page app */}
             {homepageNavigationItems.map((item, index) => (
               <HashLink
                 key={item.name}
                 to={`/academic-portfolio-homepage${item.hash}`}
                 smooth
-                className={`flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in ${
+                className={`flex items-center space-x-2 px-3 py-2 xl:px-4 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in ${
                   isActiveSection(item.sectionId)
                     ? 'bg-primary text-primary-foreground shadow-elevation-1 animate-glow'
                     : 'text-foreground hover:bg-muted hover:text-foreground hover-wiggle'
@@ -133,20 +133,39 @@ const Header = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <Icon name={item.icon} size={16} />
-                <span>{item.name}</span>
+                <span className="hidden xl:inline">{item.name}</span>
+              </HashLink>
+            ))}
+          </nav>
+
+          {/* Tablet Navigation (medium screens) */}
+          <nav className="hidden md:flex lg:hidden items-center space-x-1">
+            {homepageNavigationItems.map((item, index) => (
+              <HashLink
+                key={item.name}
+                to={`/academic-portfolio-homepage${item.hash}`}
+                smooth
+                className={`flex items-center justify-center p-2 rounded-xl text-sm font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+                  isActiveSection(item.sectionId)
+                    ? 'bg-primary text-primary-foreground shadow-elevation-1'
+                    : 'text-foreground hover:bg-muted hover:text-foreground'
+                }`}
+                title={item.name}
+              >
+                <Icon name={item.icon} size={18} />
               </HashLink>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:flex items-center space-x-3">
-            <Button variant="outline" size="sm" onClick={handleDownloadCV}>
-              <Icon name="Download" size={16} className="mr-2" />
-              CV
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-3">
+            <Button variant="outline" size="sm" onClick={handleDownloadCV} className="text-xs xl:text-sm">
+              <Icon name="Download" size={14} className="mr-1 xl:mr-2" />
+              <span className="hidden xl:inline">CV</span>
             </Button>
-            <Button variant="default" size="sm" onClick={handleScheduleMeeting}>
-              <Icon name="Calendar" size={16} className="mr-2" />
-              Schedule Meeting
+            <Button variant="default" size="sm" onClick={handleScheduleMeeting} className="text-xs xl:text-sm">
+              <Icon name="Calendar" size={14} className="mr-1 xl:mr-2" />
+              <span className="hidden xl:inline">Schedule</span>
             </Button>
           </div>
 
@@ -154,17 +173,17 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden p-1.5 sm:p-2"
             onClick={toggleMobileMenu}
           >
-            <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={24} />
+            <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={20} className="sm:w-6 sm:h-6" />
           </Button>
         </div>
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background border-t border-border animate-fade-in">
-            <nav className="px-4 py-4 space-y-2">
+          <div className="lg:hidden bg-background border-t border-border animate-fade-in">
+            <nav className="px-3 py-3 sm:px-4 sm:py-4 space-y-1 sm:space-y-2">
               {/* Always show homepage section navigation for mobile */}
               {homepageNavigationItems.map((item, index) => (
                 <HashLink
@@ -172,7 +191,7 @@ const Header = () => {
                   to={`/academic-portfolio-homepage${item.hash}`}
                   smooth
                   onClick={handleHashClick}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 animate-slide-in-left ${
+                  className={`flex items-center space-x-3 px-3 py-2.5 sm:px-4 sm:py-3 rounded-xl text-sm font-medium transition-all duration-300 animate-slide-in-left ${
                     isActiveSection(item.sectionId)
                       ? 'bg-primary text-primary-foreground shadow-elevation-1'
                       : 'text-foreground hover:bg-muted card-hover'
@@ -185,12 +204,12 @@ const Header = () => {
               ))}
               
               {/* Mobile CTA Buttons */}
-              <div className="pt-4 space-y-2 border-t border-border">
-                <Button variant="outline" fullWidth onClick={handleDownloadCV}>
+              <div className="pt-3 sm:pt-4 space-y-2 border-t border-border">
+                <Button variant="outline" fullWidth onClick={handleDownloadCV} className="text-sm">
                   <Icon name="Download" size={16} className="mr-2" />
                   Download CV
                 </Button>
-                <Button variant="default" fullWidth onClick={handleScheduleMeeting}>
+                <Button variant="default" fullWidth onClick={handleScheduleMeeting} className="text-sm">
                   <Icon name="Calendar" size={16} className="mr-2" />
                   Schedule Meeting
                 </Button>

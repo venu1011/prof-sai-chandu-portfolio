@@ -150,29 +150,29 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-slate-50 to-blue-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
+        <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-3 sm:mb-4 px-2">
             Get In Touch
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto px-4 leading-relaxed">
             Have questions about my research, need academic guidance, or want to collaborate on 
             entrepreneurship development and training programs? I'd love to hear from you. Let's connect and explore opportunities together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center mr-4">
-                <Icon name="MessageSquare" size={24} color="white" />
+          <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+            <div className="flex items-start sm:items-center mb-6">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                <Icon name="MessageSquare" size={20} color="white" className="sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-slate-800">Send a Message</h3>
-                <p className="text-slate-600">I'll get back to you within 24 hours</p>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800 leading-tight">Send a Message</h3>
+                <p className="text-sm sm:text-base text-slate-600">I'll get back to you within 24 hours</p>
               </div>
             </div>
 
@@ -198,8 +198,8 @@ const ContactSection = () => {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <Input
                   label="Full Name"
                   type="text"
@@ -267,27 +267,27 @@ const ContactSection = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             {/* Contact Details */}
-            <div className="bg-white rounded-2xl shadow-xl p-8">
-              <h3 className="text-2xl font-bold text-slate-800 mb-6">Contact Information</h3>
-              <div className="space-y-6">
+            <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-800 mb-4 sm:mb-6">Contact Information</h3>
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-start">
-                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <Icon name={info.icon} size={20} color="#3b82f6" />
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-3 sm:mr-4 flex-shrink-0">
+                      <Icon name={info.icon} size={18} color="#3b82f6" className="sm:w-5 sm:h-5" />
                     </div>
-                    <div>
-                      <h4 className="font-semibold text-slate-800 mb-1">{info.label}</h4>
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-semibold text-slate-800 mb-1 text-sm sm:text-base">{info.label}</h4>
                       {info.link ? (
                         <a
                           href={info.link}
-                          className="text-blue-600 hover:text-blue-700 transition-colors duration-300"
+                          className="text-blue-600 hover:text-blue-700 transition-colors duration-300 text-sm sm:text-base break-words"
                         >
                           {info.value}
                         </a>
                       ) : (
-                        <p className="text-slate-600 whitespace-pre-line">{info.value}</p>
+                        <p className="text-slate-600 whitespace-pre-line text-sm sm:text-base leading-relaxed">{info.value}</p>
                       )}
                     </div>
                   </div>
@@ -295,21 +295,19 @@ const ContactSection = () => {
               </div>
             </div>
 
-
-
             {/* Professional Consultation */}
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-white">
-              <div className="flex items-center mb-4">
-                <Icon name="UserCheck" size={24} className="mr-3" />
-                <h3 className="text-xl font-bold">Professional Consultation</h3>
+            <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-4 sm:p-6 md:p-8 text-white">
+              <div className="flex items-start sm:items-center mb-4">
+                <Icon name="UserCheck" size={20} className="mr-3 flex-shrink-0 sm:w-6 sm:h-6" />
+                <h3 className="text-lg sm:text-xl font-bold leading-tight">Professional Consultation</h3>
               </div>
-              <p className="text-blue-100 mb-4">
+              <p className="text-blue-100 mb-4 text-sm sm:text-base leading-relaxed">
                 Available for academic consultations, research collaborations, training programs, 
                 and entrepreneurship development initiatives. Let's work together to create 
                 impactful educational solutions.
               </p>
-              <div className="flex items-center text-sm text-blue-200">
-                <Icon name="CheckCircle" size={16} className="mr-2" />
+              <div className="flex items-start sm:items-center text-xs sm:text-sm text-blue-200">
+                <Icon name="CheckCircle" size={14} className="mr-2 mt-0.5 sm:mt-0 flex-shrink-0 sm:w-4 sm:h-4" />
                 <span>Training & placement coordination expertise</span>
               </div>
             </div>

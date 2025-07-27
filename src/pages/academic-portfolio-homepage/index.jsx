@@ -42,7 +42,7 @@ const AcademicPortfolioHomepage = () => {
       <Header />
 
       {/* Main Content */}
-      <main id="main-content" className="pt-16">
+      <main id="main-content" className="pt-14 sm:pt-16">
         {/* Hero Section */}
         <HeroSection />
 
