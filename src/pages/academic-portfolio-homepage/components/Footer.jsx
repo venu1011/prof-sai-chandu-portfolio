@@ -16,7 +16,7 @@ const Footer = () => {
     {
       name: 'LinkedIn',
       icon: 'Linkedin',
-      url: 'https://linkedin.com/in/dr-kandati',
+      url: 'https://www.linkedin.com/in/dr-sai-chandu-kandati-a22aa8b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
       color: 'hover:text-blue-600'
     },
     {

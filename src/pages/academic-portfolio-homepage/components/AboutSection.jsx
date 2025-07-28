@@ -115,7 +115,7 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center mb-16 sm:mb-20 animate-on-scroll opacity-0">
           {/* Profile Image */}
           <div className="relative order-1 lg:order-1">
-            <div className="relative overflow-hidden rounded-2xl shadow-2xl max-w-md mx-auto lg:max-w-none">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl max-w-xs sm:max-w-sm mx-auto lg:max-w-sm">
               <Image
                 src={profie}
                 alt="Dr. K. Sai Chandu"
